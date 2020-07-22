@@ -24,13 +24,16 @@
 
 Example dataset can be found [here](https://github.com/tesseract-ocr/tesstrain/blob/master/ocrd-testset.zip) 
 
-* make training MODEL_NAME=name of the resulting model
+* make training MODEL_NAME=name of the resulting model \
+  START_MODEL=Name of the model to continue from. Default: '' \
+  TESSDATA=Path to the .traineddata directory to start finetuning from \
+  FINETUNE_TYPE=Impact 
 
-It will generate a traineddata, box files, lstmf files and a list of all lstmf files. We will need the list and all lstmf files for fine-tuning.
+It will generate a traineddata(fine tuned), box files, lstmf files and a list of all lstmf files.
 
 For more information follow [this readme](https://github.com/tesseract-ocr/tesstrain)
 
-## Fine-Tuning 
+## Fine-Tuning (Explained using tesseract command)
 
 * git clone https://github.com/tesseract-ocr/tesseract.git
 * git clone https://github.com/tesseract-ocr/tessdata_best.git
@@ -51,6 +54,13 @@ Now copy the lstmf files generated earlier to tesseract_fineTune/data and all-ls
 --traineddata tesseract/tessdata/ben.traineddata \
 --train_listfile all-lstmf --max_iterations 400
 --model_output /path/to/output# tesseract-fine-tuning
+
+Combine the output files
+
+* lstmtraining --stop_training \
+  --continue_from impact_from_full/base_checkpoint \
+  --traineddata tesseract/tessdata/ben.traineddata \
+  --model_output new_model_dir/ben.traineddata
 
 # References-
 1. https://github.com/tesseract-ocr/tesstrain
