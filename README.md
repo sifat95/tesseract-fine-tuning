@@ -32,9 +32,6 @@ For more information follow [this readme](https://github.com/tesseract-ocr/tesst
 
 ## Fine-Tuning 
 
-* git clone https://github.com/tesseract-ocr/tesseract.git
-* git clone https://github.com/tesseract-ocr/tessdata_best.git
-
 The idea of fine tuning is really to apply it to one of the fully-trained existing models.
 
 1. The model can be trained using the scripts from [tesstrain](https://github.com/tesseract-ocr/tesstrain) using the following command
@@ -47,6 +44,9 @@ The idea of fine tuning is really to apply it to one of the fully-trained existi
 It will generate a traineddata(fine tuned).
 
 2. Fine tuning instructions are also provided in the tesseract documentations which is summarized beow:
+
+* git clone https://github.com/tesseract-ocr/tesseract.git
+* git clone https://github.com/tesseract-ocr/tessdata_best.git
 
 Copy the traineddata which is to be fine-tuned, from tessdata_best to tesseract/tessdata. Here ben.traineddata is used.
 
